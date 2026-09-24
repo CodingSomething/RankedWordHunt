@@ -1,0 +1,16 @@
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0 14px;
+  width: 100%;
+  background: transparent;
+  border-bottom: 1px solid var(--border-dark);
+}
+.player { display: flex; flex-direction: column; gap: 3px; }
+.right { align-items: flex-end; text-align: right; }
+.playerName { font-size: .78rem; color: var(--text-secondary); font-weight: 600; }
+.score { font: 700 1.7rem/1 var(--font-mono); color: var(--text); letter-spacing: -.03em; }
+.timer { font: 700 1.2rem/1 var(--font-mono); color: var(--blue-dark); font-variant-numeric: tabular-nums; padding: 0; background: transparent; border-radius: 0; }
+.urgent { color: var(--red); background: transparent; }

@@ -1,0 +1,2 @@
+# Add one word per line here if you want to allow a word that is missing
+# from the main dictionary. Words are case-insensitive.

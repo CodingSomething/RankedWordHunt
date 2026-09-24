@@ -1,0 +1,39 @@
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 58px;
+  padding: 0 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo { font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; width: fit-content; }
+.logoDot { display: none; }
+.links { display: flex; align-items: stretch; gap: 24px; height: 58px; }
+.links a {
+  display: flex;
+  align-items: center;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-top: 2px;
+}
+.links a:hover { color: var(--text); }
+.links .active { color: var(--text); border-bottom-color: var(--blue); font-weight: 600; }
+.right { display: flex; justify-content: flex-end; align-items: center; }
+.authLinks { display: flex; align-items: center; gap: 14px; }
+.userChip { display: flex; align-items: baseline; gap: 8px; }
+.avatar { display: none; }
+.username { font-size: .82rem; font-weight: 600; color: var(--text); }
+.elo { font: .7rem var(--font-mono); color: var(--text-muted); }
+.loginLink { font-size: .82rem; color: var(--text-secondary); text-decoration: none; }
+@media (max-width: 700px) {
+  .nav { grid-template-columns: 1fr auto; padding: 0 14px; }
+  .links { display: none; }
+  .username, .elo { display: none; }
+}

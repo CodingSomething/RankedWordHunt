@@ -1,0 +1,11 @@
+{
+  "source": "ENABLE public-domain word-game lexicon",
+  "sourceUrl": "https://raw.githubusercontent.com/dolph/dictionary/master/enable1.txt",
+  "license": "Public domain",
+  "generatedAt": "2026-09-10T18:12:51.911Z",
+  "minimumLength": 3,
+  "maximumLength": 16,
+  "wordCount": 170398,
+  "allowOverrides": 0,
+  "blockOverrides": 0
+}

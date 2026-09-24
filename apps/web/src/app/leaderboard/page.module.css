@@ -1,0 +1,16 @@
+.main {
+  width: min(680px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0 48px;
+}
+.back { display: inline-block; margin-bottom: 26px; font-size: .8rem; }
+.table { width: 100%; border-collapse: collapse; background: transparent; }
+.table th, .table td { padding: 8px 6px; text-align: left; border-bottom: 1px solid var(--line); font-size: .82rem; }
+.table th { color: var(--muted); font-weight: 600; }
+.table th:first-child, .table td:first-child { padding-left: 0; width: 42px; }
+.table th:last-child, .table td:last-child { padding-right: 0; }
+.me { font-weight: 700; }
+@media (max-width: 520px) {
+  .main { padding-top: 36px; }
+  .table th:nth-child(4), .table td:nth-child(4) { display: none; }
+}

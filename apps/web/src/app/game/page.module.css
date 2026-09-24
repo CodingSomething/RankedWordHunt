@@ -1,0 +1,34 @@
+.game {
+  width: min(520px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 36px 0 48px;
+}
+.scoreLine {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 22px;
+  font-size: .84rem;
+}
+.scoreLine span:last-child { text-align: right; }
+.scoreLine strong { font-family: var(--font-mono); font-size: .92rem; }
+.notice { margin: -8px 0 16px; font-size: .78rem; color: var(--red); text-align: center; }
+.wordArea { margin-top: 22px; font-size: .82rem; line-height: 1.7; color: var(--muted); }
+.wordLabel { color: var(--text); font-weight: 600; }
+.centered, .finished {
+  min-height: 100vh;
+  width: min(420px, calc(100% - 32px));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.centered { align-items: center; text-align: center; }
+.versus { color: var(--text); font-weight: 700; margin-bottom: 4px; }
+.finished h1 { margin-bottom: 8px; }
+.finalScore { font: 700 1.7rem var(--font-mono); color: var(--text); margin-bottom: 8px; }
+.positive { color: var(--green); margin-bottom: 18px; }
+.negative { color: var(--red); margin-bottom: 18px; }
+.words { font-size: .82rem; margin-bottom: 22px; }
+.actions { display: flex; gap: 8px; }

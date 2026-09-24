@@ -1,0 +1,32 @@
+{
+  "name": "@wordhunt/shared",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./game": {
+      "types": "./dist/game.d.ts",
+      "default": "./dist/game.js"
+    },
+    "./socket-events": {
+      "types": "./dist/socket-events.d.ts",
+      "default": "./dist/socket-events.js"
+    },
+    "./user": {
+      "types": "./dist/user.d.ts",
+      "default": "./dist/user.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch --preserveWatchOutput"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

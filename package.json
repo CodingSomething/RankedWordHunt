@@ -1,0 +1,30 @@
+{
+  "name": "wordhunt",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "predev": "npm run build -w @wordhunt/shared",
+    "dev": "concurrently -n shared,server,web \"npm run dev -w @wordhunt/shared\" \"npm run dev -w @wordhunt/server\" \"npm run dev -w @wordhunt/web\"",
+    "build": "npm run build -w @wordhunt/shared && npm run build -w @wordhunt/server && npm run build -w @wordhunt/web",
+    "test": "npm run build -w @wordhunt/shared && npm run test -w @wordhunt/server",
+    "typecheck": "npm run build -w @wordhunt/shared && npm run typecheck -w @wordhunt/web && npm run build -w @wordhunt/server",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:migrate": "npm run db:migrate -w @wordhunt/server",
+    "db:studio": "npm run db:studio -w @wordhunt/server",
+    "words:setup": "node scripts/setup-wordlist.mjs",
+    "build:server": "npm run build -w @wordhunt/shared && npm run build -w @wordhunt/server",
+    "build:server:production": "npm run words:ensure && npm run build:server",
+    "start:server": "npm run start -w @wordhunt/server",
+    "db:deploy": "npm run db:deploy -w @wordhunt/server",
+    "build:web": "npm run build -w @wordhunt/shared && npm run build -w @wordhunt/web",
+    "words:ensure": "node scripts/ensure-wordlist.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

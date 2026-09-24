@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.wordDisplay {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.currentWord { font-size: 1rem; font-weight: 700; letter-spacing: .05em; }
+.placeholder { font-size: .78rem; color: var(--muted); font-weight: 400; }
+.flashValid { color: var(--green); font-size: .82rem; font-weight: 600; }
+.flashInvalid { color: var(--red); font-size: .82rem; font-weight: 600; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 74px);
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  touch-action: none;
+}
+.cell {
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #879ca9;
+  border-radius: 0;
+  background: #fff;
+  cursor: pointer;
+}
+.cell:hover:not(.cellDisabled) { background: #f6f9fb; }
+.cellActive { background: var(--blue) !important; border-color: var(--blue-dark) !important; }
+.cellHead { outline: 2px solid var(--blue-dark); outline-offset: -3px; }
+.cellStart { background: var(--blue-dark) !important; }
+.cellDisabled { opacity: .6; cursor: default; }
+.letter { font-size: 1.75rem; font-weight: 700; color: var(--text); line-height: 1; }
+.cellActive .letter, .cellStart .letter { color: #fff; }
+.pathIndex { position: absolute; top: 4px; right: 5px; font: .56rem var(--font-mono); color: #fff; }
+@media (max-width: 390px) {
+  .grid { grid-template-columns: repeat(4, 64px); }
+  .cell { width: 64px; height: 64px; }
+  .letter { font-size: 1.5rem; }
+}

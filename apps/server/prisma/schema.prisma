@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(cuid())
+  username     String       @unique
+  email        String       @unique
+  passwordHash String
+  elo          Int          @default(1200)
+  wins         Int          @default(0)
+  losses       Int          @default(0)
+  draws        Int          @default(0)
+  createdAt    DateTime     @default(now())
+  matchesAsP1  Match[]      @relation("Player1")
+  matchesAsP2  Match[]      @relation("Player2")
+  eloHistory   EloHistory[]
+  wordsFound   WordFound[]
+}
+
+model Match {
+  id               String      @id @default(cuid())
+  createdAt        DateTime    @default(now())
+  startedAt        DateTime?
+  endsAt           DateTime?
+  finishedAt       DateTime?
+  status           MatchStatus @default(WAITING)
+  board            String
+  player1           User        @relation("Player1", fields: [player1Id], references: [id])
+  player1Id         String
+  player2           User?       @relation("Player2", fields: [player2Id], references: [id])
+  player2Id         String?
+  player1Score      Int         @default(0)
+  player2Score      Int         @default(0)
+  player1EloBefore  Int
+  player2EloBefore  Int?
+  player1EloAfter   Int?
+  player2EloAfter   Int?
+  winnerId          String?
+  abandonedById     String?
+  wordsFound        WordFound[]
+  eloHistory        EloHistory[]
+
+  @@index([player1Id, finishedAt])
+  @@index([player2Id, finishedAt])
+  @@index([status])
+}
+
+model WordFound {
+  id      String   @id @default(cuid())
+  matchId String
+  match   Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  userId  String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  word    String
+  score   Int
+  foundAt DateTime @default(now())
+
+  @@unique([matchId, userId, word])
+  @@index([userId, foundAt])
+}
+
+model EloHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matchId   String
+  match     Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  elo       Int
+  change    Int
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
+
+enum MatchStatus {
+  WAITING
+  ACTIVE
+  FINISHED
+  ABANDONED
+}

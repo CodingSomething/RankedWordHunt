@@ -1,0 +1,15 @@
+.badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sm { font-size: .68rem; padding: 0; }
+.md { font-size: .73rem; padding: 0; }
+.lg { font-size: .8rem; padding: 0; }
+.elo { font-family: var(--font-mono); opacity: .7; }
